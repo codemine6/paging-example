@@ -8,7 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import kotlinx.coroutines.flow.Flow
 
-class MainViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     val result: Flow<PagingData<User>> = Pager(
         config = PagingConfig(pageSize = 20),
