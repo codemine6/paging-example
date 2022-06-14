@@ -3,13 +3,13 @@ package com.kuswand.pagingexample
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
-class SearchPagingSource : PagingSource<Int, User>() {
+class SearchPagingSource(private val query: String) : PagingSource<Int, User>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User> {
         val page = params.key ?: 1
         val api = RetrofitInstance.api
 
         return try {
-            val response = api.searchUsers()
+            val response = api.searchUsers(query, page)
             LoadResult.Page(
                 data = response.items,
                 prevKey = if (page == 0) null else page - 1,

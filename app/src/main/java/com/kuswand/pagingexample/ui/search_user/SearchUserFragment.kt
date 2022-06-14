@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kuswand.pagingexample.SearchViewModel
-import com.kuswand.pagingexample.UserAdapter
 import com.kuswand.pagingexample.databinding.FragmentSearchUserBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -41,6 +40,17 @@ class SearchUserFragment : Fragment() {
                 userAdapter.submitData(result)
             }
         }
+
+        binding.svUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean = false
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    viewModel.searchUser(newText)
+                }
+                return true
+            }
+        })
     }
 
     override fun onDestroy() {

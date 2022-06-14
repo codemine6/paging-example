@@ -1,4 +1,4 @@
-package com.kuswand.pagingexample
+package com.kuswand.pagingexample.ui.search_user
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.kuswand.pagingexample.User
 import com.kuswand.pagingexample.databinding.ItemUserBinding
 
 class UserAdapter : PagingDataAdapter<User, UserAdapter.ViewHolder>(DiffUtilCallback()) {
